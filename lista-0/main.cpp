@@ -7,6 +7,8 @@ public:
     //Dla porównania tworzę metodę zwykłą i wirtualną zwracające stringa
     std::string GetName()   {return "Base Character Class";}
     virtual std::string VirtualGetName()   {return "Base Character Class";}
+
+    //destruktor wirtualny
 };
 
 class Player : public Character
@@ -31,6 +33,7 @@ void Print(Character* character)
 
 int main() {
 
+    //unit pointer nastepnym razem!
     Character* c = new Character();
     std::cout << "wyniki obu metod metod dla obiektu klasy Character" << std::endl;
     Print(c);
