@@ -27,7 +27,7 @@ class Wektor {
 
         typedef T value_type;
 
-        T operator [](int i) {
+        T operator [](int i) const{
             return array[i];
         }
 
@@ -39,7 +39,7 @@ class Wektor {
             std::cout << std::endl;
         }
 
-        int get_size() {
+        const int get_size() {
             return size;
         }
 
