@@ -10,7 +10,7 @@ auto add2(A funA, B argB, C argC){
 
 int main(){
 
-    std::cout << " do każdego punktu używam funkcji zdefiniowanej lambdą"
+    std::cout << "Do każdego punktu używam funkcji zdefiniowanej lambdą"
     << std::endl << std::endl;
     
     auto lambda1 = [](auto a, auto b) {return a + b;};
