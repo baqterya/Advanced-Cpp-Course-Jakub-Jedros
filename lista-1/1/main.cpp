@@ -3,7 +3,7 @@
 
 
 template <typename T, typename Y>
-void add1(T object1, Y object2)
+void add1(T object1, Y object2) //przekazac przez stala referencje
 {
     std::cout << object1 + object2 << std::endl << std::endl;
 }

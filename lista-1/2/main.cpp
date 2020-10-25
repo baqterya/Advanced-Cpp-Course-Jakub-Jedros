@@ -3,7 +3,7 @@
 
 
 template <typename A, typename B, typename C>
-auto add2(A funA, B argB, C argC){
+auto add2(A funA, B argB, C argC){ //stala referncja
     return funA(argB, argC);
 }
 

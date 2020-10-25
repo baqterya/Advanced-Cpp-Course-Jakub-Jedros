@@ -10,6 +10,7 @@ T operator*(const std::vector<T> &v1, const Wektor<T, len> &v2) {
 
     try
     {
+        //static cast zamiast (typ)
         if ((int) v1.size() == v2.get_size() && v2.get_size() != 0) {
             for (int i = 0; i < (int) v1.size(); i++)
             {
