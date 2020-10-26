@@ -3,19 +3,18 @@
 
 
 template <typename T, typename Y>
-auto add1(T object1, Y object2) {
-
+auto add1(const T& object1, const Y& object2) {
     return object1 + object2;
 }
-template<>
-auto add1(double *a, double *b) {
-    std::cout << "uzywam specjalizacji\n";
-    return *a + *b;
+
+template<typename T, typename Y>
+auto add1(const T* const object1, const Y* const object2) {
+    return *object1 + *object2;
 }
 
-char add1(const char *a, const char *b) {
-    std::cout << "uzywam wersji charowej\n";
-    return *a + *b;
+template<>
+auto add1(const char *object1, const char *object2) {
+    return std::string(object1) + object2;
 }
 
 int main() {
@@ -34,12 +33,14 @@ int main() {
     double double_a = 3.1;
     double double_b = 4.4;
 
-    const char char_a = 'A';
-    const char char_b = 'B';
+    const char* char_a = "A";
+    const char* char_b = "B";
 
-    std::cout << "Oryginalne add1\n" << add1(double_a, double_b) << std::endl;
-    std::cout << "\nWyspecjalizowane add1\n" << add1(&double_a, &double_b) << std::endl;
-    std::cout << "\nWersja add1 dla char\n" << add1(&char_a, &char_b) << std::endl;
+    std::cout << "Oryginalne add1\n" << double_a << " + " << double_b << " = " << add1(double_a, double_b) << std::endl;
+    
+    //dziwny blad jesli nie sprecyzuje typow zmiennych w <> przed overloadem add1 
+    std::cout << "\nOverload dla *\n" << double_a << " + " << double_b << " = "  << add1<const double, const double>(&double_a, &double_b) << std::endl;
+    std::cout << "\nSpecjalizacja dla const char*\n" << "A + B = " << add1(char_a, char_b) << std::endl;
 
 
     return 0;
