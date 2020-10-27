@@ -5,7 +5,7 @@ using namespace std;
 template <typename T>
 constexpr double hcubeVol(const T &a, const unsigned int &n) {
 
-    if (a >= 0) {
+    if (a >= 0 && n >= 0) {
         if (a == 0 || n == 0)
         {
             return 0;
@@ -13,7 +13,7 @@ constexpr double hcubeVol(const T &a, const unsigned int &n) {
 
         int vol = a;
 
-        for (unsigned int i = 0; i < n; i++)
+        for (unsigned int i = 1; i < n; i++)
         {
             vol *= a;
         }
