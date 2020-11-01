@@ -30,6 +30,9 @@ constexpr double hcubeVol(const T &a, const unsigned int &n) {
 
 int main() {
 
+// PB: Sprawdzenie czy liczy się w czasie kompilacji
+static_assert(hcubeVol(5, 5) == 3125);
+
     cout << "Dla hiperszecianu o a = 5 i 5 wymiarach: \n";
     cout << hcubeVol(5, 5) << endl;
 
