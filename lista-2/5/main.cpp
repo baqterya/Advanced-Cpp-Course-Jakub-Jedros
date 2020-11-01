@@ -38,7 +38,7 @@ int main() {
 
     std::cout << "Oryginalne add1\n" << double_a << " + " << double_b << " = " << add1(double_a, double_b) << std::endl;
     
-// PB: Właśnie ten błąd trzeba było w tym zadaniu naprawić, tak żeby działąło bez podawania typów szablonu.
+// PB: Właśnie ten błąd trzeba było w tym zadaniu naprawić, tak żeby działało bez podawania typów szablonu.
 // PB: Zadanie nie jest rozwiązanie.
     //dziwny blad jesli nie sprecyzuje typow zmiennych w <> przed overloadem add1 
     std::cout << "\nOverload dla *\n" << double_a << " + " << double_b << " = "  << add1<const double, const double>(&double_a, &double_b) << std::endl;
