@@ -5,22 +5,14 @@
 
 const A copy(const A& myA) {
     
-    /*
-    A x(myA);
-    return x;
-    */
-
-    return myA;
+    //return A(myA); ???
+    return A(myA);
 }
 
 const A copy(A&& myA) {
 
-    /*
-    A x = std::move(myA);
-    return x;
-    */
-
-    return std::move(myA);
+    //return std::move(A(myA));
+    return A(std::move(myA));
 }
 
 int main(){

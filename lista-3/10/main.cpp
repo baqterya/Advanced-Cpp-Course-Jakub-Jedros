@@ -8,12 +8,14 @@ const A copy(T&& myA) {
     if constexpr (std::is_rvalue_reference<decltype(myA)>::value) {
         std::cout << "jestem r-value\n";
 
-        return std::move(myA);
+        //return std::move(A(myA)); ???
+        return A(std::move(myA));
     }
     else {
         std::cout << "nie jestem r-value\n";
 
-        return myA;
+        //return A(myA); ???
+        return A(myA);
     }
     
 }
