@@ -41,6 +41,7 @@ int main() {
 // PB: Właśnie ten błąd trzeba było w tym zadaniu naprawić, tak żeby działało bez podawania typów szablonu.
 // PB: Zadanie nie jest rozwiązanie.
     //dziwny blad jesli nie sprecyzuje typow zmiennych w <> przed overloadem add1 
+    //std::enable_if
     std::cout << "\nOverload dla *\n" << double_a << " + " << double_b << " = "  << add1<const double, const double>(&double_a, &double_b) << std::endl;
     std::cout << "\nSpecjalizacja dla const char*\n" << "A + B = " << add1(char_a, char_b) << std::endl;
 
