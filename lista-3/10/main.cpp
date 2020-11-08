@@ -5,7 +5,7 @@
 
 template <typename T>
 const A copy(T&& myA) {
-    if (std::is_rvalue_reference<decltype(myA)>::value) {
+    if constexpr (std::is_rvalue_reference<decltype(myA)>::value) {
         std::cout << "jestem r-value\n";
 
         return std::move(myA);
