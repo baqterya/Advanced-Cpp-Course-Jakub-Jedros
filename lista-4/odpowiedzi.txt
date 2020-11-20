@@ -1,0 +1,32 @@
+Zadanie 11
+    1. 
+        Za każdym razem wynik działania jest inny, wątki wykonują się w różnej kolejności.
+
+        Komunikaty wyświetlane przez program wchodzą sobie w drogę ponieważ wykonują się jednocześnie (równolegle).
+
+    2. 
+        #pragma omp single sprawia że program wykorzystuje tylko jeden z dostępnych wątków.
+
+        #pragma omp master sprawia że program wykorzystuje tylko master thread.
+
+        Dodając #pragma omp critical sprawiamy, że program wykonuje się na jednym wątku na raz i dzięki temu wątki nie
+        wcinają się nawzajem w swoją pracę.
+
+
+Zadanie 12
+    1. 
+        Wersja równoległa i szeregowa dają inne wyniki.
+
+        Funkcja clock zwraca liczbę cykli zegara procesora, która upłynęła od chwili uruchomienia programu.
+        Dzieląc go przez CLOCKS_PER_SECOND w większości przypadków możemy otrzymać czas pracy programu.
+        W momencie równoległego wykonywania programu funkcja przestaje zwracać liczby odpowiadające rzeczywistemu
+        upływowi czasu.
+
+        Można to zauważyć wywołując program z "OMP_NUM_THREADS=X time". Wyliczony przez nas czas nijak ma się do
+        tego, który uzyskujemy poleceniem time.
+
+
+    2.
+        Program można naprawić korzystając z funkcji OpenMP omp_get_wtime() która zwraca czas trwania programu w sekundach.
+        Otzymany w ten sposób czas praktycznie idealnie pokrywa się z tym, który otrzymujemy poleceniem time
+        niezależnie od ilości wykorzystanych wątków.
