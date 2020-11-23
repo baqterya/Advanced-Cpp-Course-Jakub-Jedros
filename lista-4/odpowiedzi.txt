@@ -1,8 +1,9 @@
 Zadanie 11
     1. 
-        Za każdym razem wynik działania jest inny, wątki wykonują się w różnej kolejności.
+        Za każdym razem wynik działania jest inny, wątki wykonują się w różnej kolejności ponieważ wątki wykonują się równolegle.
 
         Komunikaty wyświetlane przez program wchodzą sobie w drogę ponieważ wykonują się jednocześnie (równolegle).
+
 
     2. 
         #pragma omp single sprawia że program wykorzystuje tylko jeden z dostępnych wątków.
@@ -11,6 +12,15 @@ Zadanie 11
 
         Dodając #pragma omp critical sprawiamy, że program wykonuje się na jednym wątku na raz i dzięki temu wątki nie
         wcinają się nawzajem w swoją pracę.
+
+        Zalety sigle: wątki nie wchodzą sobie w drogę
+        Wady single: nie wiemy, na którym wątku wykonuje się program
+
+        Zalety master: zawsze wykonuje się na wątku 0
+        Wady master: wątki nie są zsynchronizowane
+
+        Zalety critical: wykonuje się na raz na jednym wątku, wątki nie wchodzą sobie w drogie
+        Wady critical: nie wiemy w jakiej kolejności program wybierze wątki do pracy
 
 
 Zadanie 12
@@ -25,6 +35,10 @@ Zadanie 12
         Można to zauważyć wywołując program z "OMP_NUM_THREADS=X time". Wyliczony przez nas czas nijak ma się do
         tego, który uzyskujemy poleceniem time.
 
+        W programie wykorzystujemy zły sposób mierzenia czasu. W przypadku pracy na wielu wątkach funkcja clock() nie zwraca
+        poprawnego wyniu czasu pracy.
+
+        Polecenie /usr/bin/time pokazuje % wykorzystania procesora. Dla jednego wątku było to 100%, dla dwóch 199%, dla 4 399% itd.
 
     2.
         Program można naprawić korzystając z funkcji OpenMP omp_get_wtime() która zwraca czas trwania programu w sekundach.
