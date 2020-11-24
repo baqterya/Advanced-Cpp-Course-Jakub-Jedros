@@ -5,7 +5,7 @@
 int main() {
     const int N = 1000000000;
     int i = 0;
-    float sum = 0;
+    double sum = 0;
     clock_t t0 = clock();
     
     double start, end;
