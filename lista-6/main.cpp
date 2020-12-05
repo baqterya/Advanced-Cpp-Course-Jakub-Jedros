@@ -25,6 +25,7 @@ int main() {
  
     std::vector<double> a = {1, 2, 3};
     std::vector<double> b = {1, 2, 3, 4};
+    std::vector<double> c = {1, 2, 3, 4};
     std::array<std::thread, 10> threads;
 
     for (auto &t : threads) {
