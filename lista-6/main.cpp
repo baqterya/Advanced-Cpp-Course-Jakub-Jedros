@@ -29,22 +29,20 @@ int main() {
     std::array<std::thread, 10> threads;
     double sum = 0;
 
-    
     for (auto &t : threads) {
         std::promise<double> prom;
         std::future<double> fut = prom.get_future(); // = iloczynSkal(a, b, prom);
     
         t = std::thread ([&]{
             iloczynSkal(a, a, prom);
-            double g = fut.get();
             try {
-                std::cout << "result: " << g << "\n";
+                //double g = fut.get();
+                //std::cout << "result: " << g << "\n";
+                sum += fut.get();
             }
             catch(const std::exception& e) {
                 std::cout << "exception caught: " << e.what() << '\n';
-            }
-
-            sum += g;
+            }    
         });
         
         t.join();
