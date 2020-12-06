@@ -5,7 +5,7 @@
 #include <exception>
 #include <numeric>
 
-void iloczynSkal(std::vector<double> &a, std::vector<double> &b, std::promise<double> &p) {
+void iloczynSkal(const std::vector<double> &a, const std::vector<double> &b, std::promise<double> &p) {
        
     try {
         if (a.size() != b.size()) {
@@ -27,7 +27,7 @@ int main() {
     std::vector<double> b = {1, 2, 3, 4};
     std::vector<double> c = {1, 2, 3, 4};
     std::array<std::thread, 10> threads;
-    double suma = 0;
+    double sum = 0;
 
     
     for (auto &t : threads) {
@@ -35,19 +35,22 @@ int main() {
         std::future<double> fut = prom.get_future(); // = iloczynSkal(a, b, prom);
     
         t = std::thread ([&]{
-            iloczynSkal(a, b, prom);
+            iloczynSkal(a, a, prom);
+            double g = fut.get();
             try {
-                std::cout << "result: " << fut.get() << "\n";
+                std::cout << "result: " << g << "\n";
             }
             catch(const std::exception& e) {
                 std::cout << "exception caught: " << e.what() << '\n';
             }
-            
-            
+
+            sum += g;
         });
         
         t.join();
     }
+
+    std::cout << "sum = " << sum << "\n";
 /*
     std::cout << "waiting...\n";
 
