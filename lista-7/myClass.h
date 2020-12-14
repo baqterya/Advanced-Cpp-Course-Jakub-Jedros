@@ -15,7 +15,7 @@ class myClass {
         myClass(int numThreads){
             _threadList.reserve(numThreads);
             for (int i = 0; i < numThreads; i++) {
-                _threadList.emplace_back( std::bind(&myClass::findTask, this) );
+                _threadList.emplace_back( &myClass::findTask, this);
             }
         }
 
