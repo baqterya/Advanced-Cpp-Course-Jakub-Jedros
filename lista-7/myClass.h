@@ -73,10 +73,10 @@ class myClass {
                     
                     task = std::move(_taskList.front());
 
-                    sum += task();
-                    taskCount++;
                     _taskList.pop();
                 }
+                sum += task();
+                taskCount++;
             }            
         }  
 };
