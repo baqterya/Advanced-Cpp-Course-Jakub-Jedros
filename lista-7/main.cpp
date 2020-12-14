@@ -14,7 +14,9 @@ int main() {
     
     myClass test(8);
     
-    test.add_task(funToPass);
+    for (int i = 0; i < 10; i++)
+        test.add_task(funToPass);
+    
     test.stop();
 
     std::cout << "average = " << test.average() << std::endl;
