@@ -12,8 +12,8 @@ public:
     }
 
     unsigned int pobierz(unsigned int &n) {
-        //std::lock_guard<std::mutex> lock(_tank_mu);
-
+        std::lock_guard<std::mutex> lock(_tank_mu);
+        
         if ( n > _zawartosc ) {
             return 0;
         }

@@ -21,14 +21,13 @@ public:
     }
 
     ~Silnik() {
-        //_cond.notify_one();
         _worker.join();
         std::cout << "Niszcze silnik nr " << _id << std::endl;
     }
 
     void dodajZbiornik(const std::shared_ptr<ZbiornikPaliwa> &tank_ptr) {
+        std::lock_guard<std::mutex> lock(_mu);
         _zbiorniki.emplace_back(tank_ptr);
-        //_cond.notify_one();
     }
 
 
@@ -49,11 +48,10 @@ private:
     std::thread _worker;
 
     std::mutex _mu;
-    //std::condition_variable _cond;
     bool end_work = false;
 
     void looper() {
-        
+
         std::this_thread::sleep_for(std::chrono::seconds(1));
         while (true)
         {
@@ -61,10 +59,6 @@ private:
                 std::unique_lock<std::mutex> lock(_mu);
 
                 auto aktualny_zbiornik = _zbiorniki.begin();
-                /*
-                while (!end_work && _zbiorniki.empty()) {
-                    _cond.wait(lock);
-                }*/
                 
                 if (!_zbiorniki.empty()){
                     end_work = true;
